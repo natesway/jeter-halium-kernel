@@ -76,7 +76,7 @@ EXPORT_SYMBOL(vfs_getattr);
 
 int vfs_fstat(unsigned int fd, struct kstat *stat)
 {
-	struct file *f = fget_raw(fd);
+	struct fd f = fdget_raw(fd);
 	int error = -EBADF;
 
 	if (f.file) {
